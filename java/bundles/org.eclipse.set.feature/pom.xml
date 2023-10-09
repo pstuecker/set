@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.eclipse.set</groupId>
+	<artifactId>org.eclipse.set.feature</artifactId>
+	<version>2.2.0-SNAPSHOT</version>
+	<packaging>eclipse-feature</packaging>
+
+	<parent>
+		<relativePath>../../..</relativePath>
+		<groupId>org.eclipse.set</groupId>
+		<artifactId>org.eclipse.set.releng.parent</artifactId>
+		<version>2.2.0-SNAPSHOT</version>
+	</parent>
+
+
+	<build>
+		<plugins>
+
+			<!-- This plugin-configuration ensures the filtering of all files in "rootdir_to_be_filtered" 
+				to the output directory "rootdir_filtered" for example to enable version 
+				numbers in readme files -->
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.3.1</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<!-- here the phase you need -->
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/rootdir_filtered</outputDirectory>
+							<resources>
+								<resource>
+									<directory>rootdir_to_be_filtered</directory>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-about</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/about/web/about</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/../../../web/about/dist</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-textviewer</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/textviewer/web/textviewer</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/../../../web/textviewer/dist</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-pdfviewer</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/pdfviewer/web/pdf</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/../../../web/pdf/dist</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-siteplan</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/siteplan/web/siteplan</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/../../../web/siteplan/dist</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-developerhelp</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/developerhelp/web/developerhelp</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/../../../web/developerhelp/dist</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+
+			<!-- clean the filtered output folder because contents get deprecated 
+				each build -->
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.3.1</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>rootdir_filtered</directory>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+						<fileset>
+							<directory>about</directory>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+						<fileset>
+							<directory>textviewer</directory>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+						<fileset>
+							<directory>pdfviewer</directory>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+						<fileset>
+							<directory>siteplan</directory>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+						<fileset>
+							<directory>developerhelp</directory>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
