@@ -10,10 +10,10 @@ on:
 
 jobs:
   dependencies:
-    uses: pstuecker/build/.github/workflows/update-dependencies.yml@main
+    uses: pstuecker/build/.github/workflows/update-dependencies.yml@self-main
     permissions:
       contents: write
       issues: write
       pull-requests: write
     secrets:
-      gitlabAPIToken: test
+      GH_BOT_TOKEN: test
