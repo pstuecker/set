@@ -10,5 +10,5 @@ on:
 
 jobs:
   dependencies:
-    uses: eclipse-set/build/.github/workflows/update-dependencies.yml@main
+    uses: pstuecker/build/.github/workflows/update-dependencies.yml@main
     secrets: inherit
