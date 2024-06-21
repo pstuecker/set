@@ -7,7 +7,7 @@ First, instructions on how to work on the main SET application relying on prebui
 
 ## Operating Systems
 
-Eclipse SET currently supports Windows x64 for execution and either Windows x64 or Linux x64 machine for building the code.
+Eclipse SET currently supports Windows x64 for execution and either Windows x64 or Linux x64 machine for buil ding the code.
 Other operating systems or processor architectures may work, but are generally not supported.
 
 ## Prerequisites
