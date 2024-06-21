@@ -11,4 +11,9 @@ on:
 jobs:
   dependencies:
     uses: pstuecker/build/.github/workflows/update-dependencies.yml@main
-    secrets: inherit
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    secrets:
+      gitlabAPIToken: test
